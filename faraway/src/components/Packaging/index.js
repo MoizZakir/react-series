@@ -12,12 +12,12 @@ export const Packaging = ({dataPass,number,originalData,orginalSetData}) => {
     }
 
   return (
-    <div style={{height:"50vh", width:"70%", display:'flex', flexWrap:'wrap', margin:"0px auto", justifyContent:"space-between"}}>
-        <div style={{display:'flex',gap:'10px',  alignItems:'center', justifyContent:'center'}}>
-            <input type='checkBox' checked={dataPass.packed} onChange={()=>checkHandler(dataPass.packed,number)}/>
-            <p style={{textDecoration: dataPass.packed ?'line-through':'none'}}>{`${dataPass.quantity}   ${dataPass.name}`}</p>
-            <p>X</p>
-        </div>
+    
+        <div style={{display:'flex', gap:"10px", width:"20%" }}>
+            <input style={{marginTop:"18px", height:"20px"}} type='checkBox' checked={dataPass.packed} onChange={()=>checkHandler(dataPass.packed,number)}/>
+            <p style={{color :'#fde7aa',textDecoration: dataPass.packed ?'line-through':'none'}}>{`${dataPass.quantity}   ${dataPass.name}`}</p>
+            <p style={{color :'red'}}>X</p>
+        
        
         
         

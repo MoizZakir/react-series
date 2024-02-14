@@ -1,47 +1,29 @@
 import React, { useState } from 'react'
 
 export const BottomButton = ({data,setSome}) => {
-  const [selection,setSelection]=useState('')
-  let nowData=[...data]
-  nowData=[]
-  // console.log(nowData)
-if(selection=='Sort by input'){
-  // nowData.pop()
-  // setSome([])
-  console.log(nowData)
-  
-}
-else if(selection=="By description"){console.log(2)}
-else if(selection=='By pac'){console.log(3)}
-
-else{}
-  // switch(selection){
-  //   case"Sort by input":
-  //   
-  //   break;
-  //   case"By description":
-  //   console.log(selection)
-  //   break;
-  //   case"By pac":
-  //   console.log(selection)
-  //   break;
-  //   default:
-
-  // }
-    // setData(nowData)
-    // console.log(selection)
-  
+  function moiz(e){
+    let nowData=[...data];
+    //inputSorted
+    const inputSorted =[...nowData].sort((a,b)=>{return a.quantity-b.quantity});
+   //description sorted
+    const descriptionSort=[...nowData].sort((a,b)=>{
+      return a.name.localeCompare(b.name);
+    });
+    //packedSorting
+    const byPacked=[...nowData].sort((a, b) => a.packed === b.packed ? 0 : (a.packed ? -1 : 1));
+    (e.target.value=='Sort by input')? setSome(inputSorted):(e.target.value=="By description")? setSome(descriptionSort):(e.target.value=="By pac")?setSome(byPacked):console.log(true);
+  }
   return (
     <div>
 
 
-<select name="cars" id="cars" onChange={(e)=>{setSelection(e.target.value)}}>
+<select style={{backgroundColor:'#d7c294', padding:"5px 14px", borderRadius:"20px"}} name="cars" id="cars" onChange={moiz}>
   <option value="Sort by input">Sort by input</option>
   <option value="By description" >By description</option>
   <option value="By pac">By pack</option>
   
 </select>
-        <button onClick={()=>{setSome([])}}>ClearList</button>
+        <button style={{backgroundColor:'#d7c294', padding:"6.4px 14px", borderRadius:"20px"}} onClick={()=>{setSome([])}}>ClearList</button>
     </div>
   )
 }

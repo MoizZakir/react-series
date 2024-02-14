@@ -7,13 +7,13 @@ import{ Items }from './components/Items/Items'
 import { useState } from 'react';
 
 function App() {
-  const [data,setData]=useState([{packed:false,name:'noneni',quantity:2},{packed:false,name:'',quantity:2},{packed:true,name:'tofee',quantity:2}])
+  const [data,setData]=useState([])
   return (
     <>
     <Header/>
     <Form mydata={data} setdata={setData}/>
     <Items myData={data} setValue={setData}/>
-    <Footer />
+    <Footer myData={data}/>
     
     
     </>

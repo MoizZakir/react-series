@@ -7,7 +7,7 @@ export const Items = ({myData,setValue}) => {
   console.log(thisData)
   return (
     <div style={{display:"flex",flexDirection:'column', alignItems:"center", height:"60vh", backgroundColor:'#4c3423'}}>
-      <div style={{display:'flex'}}>
+      <div style={{display:'flex', width:"70%", height:"50vh",  flexWrap:'wrap'}}>
      { thisData.map((e,num)=>(
 
       <Packaging dataPass={e} number={num} originalData={myData} orginalSetData={setValue}/>
