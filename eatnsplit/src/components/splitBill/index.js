@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import bill.css from '/'
+import './bill.css' 
 
 export const SplitBill = ({billUi,userIndex,user,setUser}) => {
     let data=[...user]
@@ -23,7 +23,7 @@ export const SplitBill = ({billUi,userIndex,user,setUser}) => {
         console.log(data);
     }
   return (
-    <div style={{display:'flex',flexDirection:'column',alignItems:'center' ,border:'1px solid black' }}>
+    <div style={{display:'flex',flexDirection:'column',alignItems:'center', borderLeft:"1px solid purple", borderRadius:"50%", padding:'10px 10px', boxShadow:'1px 1px 20px 1px' ,width:"600px", height:"350px"}}>
         
         <h4>Split a bill with  {data[userIndex].name}</h4>
         <div style={{display:'flex' ,flexDirection:'column', gap:"30px" ,marginTop:"10px", width:"50%"}}>
@@ -48,7 +48,7 @@ export const SplitBill = ({billUi,userIndex,user,setUser}) => {
             </div>
             
         </div>
-<button style={{marginTop:"10px", marginLeft:"70px", padding:'5px 15px'}} onClick={()=>splitHandler()}>Split bill</button>
+<button style={{marginTop:"10px", marginLeft:"70px", padding:'8px 16px' ,backgroundColor:'lightblue', border:'none',borderRadius:'10px'}} onClick={()=>splitHandler()}>Split bill</button>
 
     </div>
   )
