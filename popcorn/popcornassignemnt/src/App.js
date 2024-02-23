@@ -7,7 +7,12 @@ import { useEffect, useState } from 'react';
 
 function  App() {
   const [search,setSearch]=useState('')
+  const [rateValue,setRateValue]=useState(0)
   const [data,setData]=useState([])
+  const [movieDekhi,setMovieDekhi]=useState([])
+  const [watchedMovies,setWatchedMovies]=useState([])
+  const [select,setSelect]=useState()
+  console.log(select)
   useEffect(()=>{
  async function fetchdata(){
     const a=(await fetch(`https://api.themoviedb.org/3//search/movie?api_key=638301d2eb61261f82117ad5580f6bd4&query=${search}`)).json().then((e)=>setData([...e.results]));
@@ -26,10 +31,10 @@ function  App() {
  
   return (
     <div >
-     <TopBar setsearch={setSearch}/>
-     <div style={{display:'flex',width:'100%'}}>
-     <MovieList mydata={data}/>
-     <WatchMovie/></div>
+     <TopBar setsearch={setSearch} setselect={setSelect}/>
+     <div style={{display:'flex',width:'100%', justifyContent:'center' ,gap:'20px' ,backgroundColor:'#1b2021'} }>
+     <MovieList mydata={data} select={setSelect}/>
+    <WatchMovie mydata={data} select={select} setRateNum={setRateValue} rateNum={rateValue} movieAdd={movieDekhi} setMovieAdd={setMovieDekhi} /></div>
     </div>
   );
 }
