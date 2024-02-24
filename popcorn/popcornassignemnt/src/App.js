@@ -31,7 +31,7 @@ function  App() {
  
   return (
     <div >
-     <TopBar setsearch={setSearch} setselect={setSelect}/>
+     <TopBar setsearch={setSearch} setselect={setSelect} mydata={data}/>
      <div style={{display:'flex',width:'100%', justifyContent:'center' ,gap:'20px' ,backgroundColor:'#1b2021'} }>
      <MovieList mydata={data} select={setSelect}/>
     <WatchMovie mydata={data} select={select} setRateNum={setRateValue} rateNum={rateValue} movieAdd={movieDekhi} setMovieAdd={setMovieDekhi} /></div>

@@ -6,6 +6,7 @@ export const WatchMovie = ({mydata,select,setRateNum,rateNum,movieAdd,setMovieAd
     let movies=[...movieAdd]
     console.log(movies)
     const [singleMovie,setSingleMovie]=useState({})
+    const [singleWatchedMovie,setSingleWatchedMovie]=useState({})
 
 
 
@@ -25,6 +26,7 @@ export const WatchMovie = ({mydata,select,setRateNum,rateNum,movieAdd,setMovieAd
           </div>
 
         </div> 
+        {!singleMovie.rating?(
         
   <div style={{backgroundColor:'#293234', marginTop:'50px'}}>
 <div style={{ display:"flex", justifyContent:'center', gap:"20px",alignItems:'center', padding:"20px 0"}}>
@@ -41,9 +43,13 @@ export const WatchMovie = ({mydata,select,setRateNum,rateNum,movieAdd,setMovieAd
 
 </div>
 <div style={{display:'flex',justifyContent:'center'}}>
-  <button style={{padding:"5px 55px", backgroundColor:"#5a37d1" ,color:'white' ,borderRadius:"10px", border:'none'}} onClick={()=>{movies.push(singleMovie); setMovieAdd(movies) }}>Add to List</button>
+  <button style={{padding:"5px 55px", backgroundColor:"#5a37d1" ,color:'white' ,borderRadius:"10px", border:'none'}} onClick={()=>{singleMovie.rating=rateNum;
+    movies.push(singleMovie); setMovieAdd(movies);setRateNum(()=>0) }}>Add to List</button>
 </div>
   </div> 
+        ):(<div  style={{color:"white" ,backgroundColor:'#293234', textAlign:'center',padding:"20px 0px", marginTop:'10px'}}>
+          You rated this Movie {singleMovie?.rating}
+        </div>)}
 <div>
   <p style={{textAlign:'center', padding:'5px 15px', color:'whitesmoke' ,marginTop:'10px'}}>{singleMovie?.overview}</p>
 </div>
@@ -60,10 +66,11 @@ console.log(singleMovie)
 const WatchedMoviesList=({data})=>{
   return(
     <div>
-      <div style={{width:'75%', cursor:'pointer',display:'flex', borderBottom:'1px solid black', margin:'5px 0', padding:'10px 0'}}>
+      <div style={{width:'75%', cursor:'pointer',display:'flex', borderBottom:'1px solid white', margin:'5px 0', padding:'10px 0' ,color:'whitesmoke'} } >
         <img height={50} width={80} src={'https://image.tmdb.org/t/p/w45/'+data?.poster_path} alt='Lodaing...'/>
-        <div><p>{data?.title}</p>
-        <p>{data?.rating}</p>
+        <div onClick={()=>{setSingleWatchedMovie({...data})}}><p>{data?.title}</p>
+        <div style={{display:'flex'}}>
+        <p style={{marginLeft:'3px'}}>{data?.rating } </p> <p style={{marginLeft:'3px'}}> {[... Array(data?.rating)].map(()=>(<Stars/>))}</p></div>
         
    
     </div>
@@ -104,7 +111,7 @@ function Stars({index}){
 
   return (
     
-  <div  style={{width:'35%' , height:"200px",backgroundColor:'#24292c', height:"100Vh" ,display:"flex",flexDirection:'column'}}>
+  <div  style={{width:'35%' , height:"200px",backgroundColor:'#24292c', height:"90Vh",overflowY:" scroll" ,display:"flex",flexDirection:'column'}}>
 
 {select>=0 ?(
 <MoviesDetails/>
